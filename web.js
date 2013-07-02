@@ -22,6 +22,7 @@ exports.start = function()
 
 		response.writeHead(200, {
 			'Last-Modified': this.start_date.toUTCString(),
+			'Cache-Control': 'max-age=3600',
 			'Content-Length': response_data.length,
 			'Content-Type': 'text/html; charset=utf-8'
 		});
