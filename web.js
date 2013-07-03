@@ -4,6 +4,14 @@ var url = require('url');
 
 exports.start = function()
 {
+	this.content_types = {};
+	this.handlers = {
+		fallback: function(request, response, request_url, data)
+		{
+			response.write(data);
+		}
+	};
+
 	this.start_date = new Date();
 
 	this.server = http.createServer();
@@ -18,15 +26,36 @@ exports.start = function()
 		var request_url = url.parse(request.url, true);
 		console.log('[HTTP] request from ' + request.socket.remoteAddress + ' for ' + request_url.pathname);
 
-		var response_data = 'yes, hello';
+		var path = (request_url.pathname !== '/') ? request_url.pathname : '/index.html';
+		var parts = path.split('.');
+		var ext = (parts.length > 1) ? parts[parts.length - 1] : 'html';
+		var content_type = (this.content_types[ext] !== undefined) ? this.content_types[ext] : 'text/html';
+		var route = (this.handlers[content_type] !== undefined) ? content_type : 'fallback';
 
-		response.writeHead(200, {
-			'Last-Modified': this.start_date.toUTCString(),
-			'Cache-Control': 'max-age=3600',
-			'Content-Length': response_data.length,
-			'Content-Type': 'text/html; charset=utf-8'
-		});
-		response.write('yes, hello');
+		fs.readFile('./public' + path, function(err, data)
+		{
+			if(err)
+			{
+				console.log(err);
+				response.statusCode = 404;
+				response.setHeader('Content-Type', 'text/plain');
+				response.write('404 Not Found');
+				response.end();
+			}
+			else
+			{
+				response.statusCode = 200;
+				response.setHeader('Content-Type', content_type);
+				this.handlers[route](request, response, request_url, data.toString());
+				response.end();
+			}
+		}.bind(this));
+	}.bind(this));
+
+	this.server.on('checkContinue', function(request, response)
+	{
+		response.writeHead(400);
 		response.end();
+		request.socket.end();
 	}.bind(this));
 }
