@@ -2,9 +2,13 @@ var fs = require('fs');
 var http = require('http');
 var url = require('url');
 
-exports.start = function()
+exports.Server = function()
 {
+	this.file_cache = {};
+
 	this.content_types = {};
+	this.content_caching = {};
+
 	this.handlers = {
 		fallback: function(request, response, request_url, data)
 		{
@@ -12,16 +16,22 @@ exports.start = function()
 		},
 	};
 
-	this.start_date = new Date();
+	this.start = function()
+	{
+		this.start_date = new Date();
 
-	this.server = http.createServer();
-	console.log('[HTTP] created');
+		this.server = http.createServer();
+		console.log('[HTTP] created');
 
-	this.server.listen(80);
-	var addr = this.server.address();
-	console.log('[HTTP] listening on ' + addr.address + ':' + addr.port);
+		this.server.listen(80);
+		var addr = this.server.address();
+		console.log('[HTTP] listening on ' + addr.address + ':' + addr.port);
 
-	this.server.on('request', function(request, response)
+		this.server.on('request', this.cb_request);
+		this.server.on('checkContinue', this.cb_checkContinue);
+	}.bind(this);
+
+	this.cb_request = function(request, response)
 	{
 		var request_url = url.parse(request.url, true);
 		var safe_pathname = request_url.pathname.replace(/[^A-Za-z0-9_\-\.]/g, '');
@@ -52,12 +62,12 @@ exports.start = function()
 				response.end();
 			}
 		}.bind(this));
-	}.bind(this));
+	}.bind(this);
 
-	this.server.on('checkContinue', function(request, response)
+	this.cb_checkContinue = function(request, response)
 	{
 		response.writeHead(400);
 		response.end();
 		request.socket.end();
-	}.bind(this));
+	}.bind(this);
 }

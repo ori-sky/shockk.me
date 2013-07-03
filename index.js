@@ -1,4 +1,4 @@
 var web = require('./web');
-web.start();
-
-web.content_types.png = 'image/png';
+var server = new web.Server();
+server.content_types.png = 'image/png';
+server.start();
