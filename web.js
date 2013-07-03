@@ -24,15 +24,17 @@ exports.start = function()
 	this.server.on('request', function(request, response)
 	{
 		var request_url = url.parse(request.url, true);
-		console.log('[HTTP] request from ' + request.socket.remoteAddress + ' for ' + request_url.pathname);
+		var safe_pathname = request_url.pathname.replace(/[^A-Za-z0-9_\-\.]/g, '');
+		var safe_path = (safe_pathname !== '') ? safe_pathname : 'index.html';
 
-		var path = (request_url.pathname !== '/') ? request_url.pathname : '/index.html';
-		var parts = path.split('.');
+		console.log('[HTTP] request from ' + request.socket.remoteAddress + ' for ' + safe_path);
+
+		var parts = safe_path.split('.');
 		var ext = (parts.length > 1) ? parts[parts.length - 1] : 'html';
 		var content_type = (this.content_types[ext] !== undefined) ? this.content_types[ext] : 'text/html';
 		var route = (this.handlers[content_type] !== undefined) ? content_type : 'fallback';
 
-		fs.readFile('./public' + path, function(err, data)
+		fs.readFile('./public/' + safe_path, function(err, data)
 		{
 			if(err)
 			{
