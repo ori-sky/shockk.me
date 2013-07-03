@@ -9,7 +9,7 @@ exports.start = function()
 		fallback: function(request, response, request_url, data)
 		{
 			response.write(data);
-		}
+		},
 	};
 
 	this.start_date = new Date();
@@ -48,7 +48,7 @@ exports.start = function()
 			{
 				response.statusCode = 200;
 				response.setHeader('Content-Type', content_type);
-				this.handlers[route](request, response, request_url, data.toString());
+				this.handlers[route](request, response, request_url, data);
 				response.end();
 			}
 		}.bind(this));
