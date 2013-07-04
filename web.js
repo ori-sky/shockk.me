@@ -18,7 +18,30 @@ exports.Server = function()
 
 	this.start = function()
 	{
+		// store the date and time the server was started at
 		this.start_date = new Date();
+
+		// get all filenames in the public directory
+		fs.readdir('./public/', function(err_dir, files)
+		{
+			if(err_dir)
+			{
+				console.log(err);
+			}
+			else
+			{
+				for(var iFile in files)
+				{
+					var name = files[iFile];
+					var data = fs.readFileSync('./public/' + name);
+
+					this.file_cache[name] = data;
+					console.log('[HTTP] loaded ' + name + ' into cache');
+				}
+			}
+		}.bind(this));
+
+		// TODO: fs.watch and stuff
 
 		this.server = http.createServer();
 		console.log('[HTTP] created');
@@ -44,24 +67,21 @@ exports.Server = function()
 		var content_type = (this.content_types[ext] !== undefined) ? this.content_types[ext] : 'text/html';
 		var route = (this.handlers[content_type] !== undefined) ? content_type : 'fallback';
 
-		fs.readFile('./public/' + safe_path, function(err, data)
+		if(this.file_cache[safe_path] === undefined)
 		{
-			if(err)
-			{
-				console.log(err);
-				response.statusCode = 404;
-				response.setHeader('Content-Type', 'text/plain');
-				response.write('404 Not Found');
-				response.end();
-			}
-			else
-			{
-				response.statusCode = 200;
-				response.setHeader('Content-Type', content_type);
-				this.handlers[route](request, response, request_url, data);
-				response.end();
-			}
-		}.bind(this));
+			console.log('[ERROR] 404 Not Found');
+			response.statusCode = 404;
+			response.setHeader('Content-Type', 'text/plain');
+			response.write('404 Not Found');
+			response.end();
+		}
+		else
+		{
+			response.statusCode = 200;
+			response.setHeader('Content-Type', content_type);
+			this.handlers[route](request, response, request_url, this.file_cache[safe_path]);
+			response.end();
+		}
 	}.bind(this);
 
 	this.cb_checkContinue = function(request, response)
