@@ -16,6 +16,21 @@ exports.Server = function()
 		},
 	};
 
+	this.cache_file = function(name)
+	{
+		try
+		{
+			var data = fs.readFileSync('./public/' + name);
+			this.file_cache[name] = data;
+			console.log('[CACHE] cached ' + name);
+		}
+		catch(e)
+		{
+			delete this.file_cache[name] = data;
+			console.log('[CACHE] uncached ' + name);
+		}
+	}.bind(this);
+
 	this.start = function()
 	{
 		// store the date and time the server was started at
@@ -33,15 +48,25 @@ exports.Server = function()
 				for(var iFile in files)
 				{
 					var name = files[iFile];
-					var data = fs.readFileSync('./public/' + name);
-
-					this.file_cache[name] = data;
-					console.log('[HTTP] loaded ' + name + ' into cache');
+					if(name.match(/^\./) || name.match(/~$/) || name === '4913') continue;
+					this.cache_file(name);
 				}
 			}
 		}.bind(this));
 
-		// TODO: fs.watch and stuff
+		// set up a file system watch on the public directory
+		fs.watch('./public/', function(e, name)
+		{
+			// ignore vi/vim magic files
+			if(name.match(/^\./) || name.match(/~$/) || name === '4913') return;
+
+			switch(e)
+			{
+				case 'change':
+					this.cache_file(name);
+					break;
+			}
+		}.bind(this));
 
 		this.server = http.createServer();
 		console.log('[HTTP] created');
