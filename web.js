@@ -16,6 +16,7 @@ exports.Server = function()
 		},
 	};
 
+	// cache a file from disk
 	this.cache_file = function(name)
 	{
 		try
@@ -31,6 +32,7 @@ exports.Server = function()
 		}
 	}.bind(this);
 
+	// start the server
 	this.start = function()
 	{
 		// store the date and time the server was started at
@@ -79,6 +81,7 @@ exports.Server = function()
 		this.server.on('checkContinue', this.cb_checkContinue);
 	}.bind(this);
 
+	// receive requests and respond to them
 	this.cb_request = function(request, response)
 	{
 		var request_url = url.parse(request.url, true);
@@ -96,8 +99,18 @@ exports.Server = function()
 		{
 			console.log('[ERROR] 404 Not Found');
 			response.statusCode = 404;
-			response.setHeader('Content-Type', 'text/plain');
-			response.write('404 Not Found');
+
+			if(this.file_cache['404.html'] === undefined)
+			{
+				response.setHeader('Content-Type', 'text/plain');
+				response.write('404 Not Found');
+			}
+			else
+			{
+				response.setHeader('Content-Type', 'text/html');
+				this.handlers[route](request, response, request_url, this.file_cache['404.html']);
+			}
+
 			response.end();
 		}
 		else
@@ -109,6 +122,7 @@ exports.Server = function()
 		}
 	}.bind(this);
 
+	// prevent uploads which eat memory and other important stuff
 	this.cb_checkContinue = function(request, response)
 	{
 		response.writeHead(400);
