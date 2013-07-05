@@ -96,7 +96,7 @@ exports.Server = function()
 		var content_type = (this.content_types[ext] !== undefined) ? this.content_types[ext] : 'text/html';
 		var route = (this.handlers[ext] !== undefined) ? ext : 'fallback';
 
-		if(this.file_cache[safe_path] === undefined)
+		if(this.file_cache[safe_path] === undefined || typeof this.handlers[route] !== 'function')
 		{
 			console.log('[ERROR] 404 Not Found');
 			response.statusCode = 404;
@@ -109,7 +109,7 @@ exports.Server = function()
 			else
 			{
 				response.setHeader('Content-Type', 'text/html');
-				this.handlers[route](request, response, request_url, this.file_cache['404.html']);
+				this.handlers.fallback(request, response, request_url, this.file_cache['404.html']);
 			}
 
 			response.end();
