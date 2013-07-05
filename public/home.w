@@ -1,6 +1,6 @@
 **template.wt**
 
-*TITLE*Home*
+*TITLE*Home**
 
 *BODY*
 <h1>Heading</h1>
