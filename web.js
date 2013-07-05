@@ -27,7 +27,7 @@ exports.Server = function()
 		}
 		catch(e)
 		{
-			delete this.file_cache[name] = data;
+			delete this.file_cache[name];
 			console.log('[CACHE] uncached ' + name);
 		}
 	}.bind(this);
@@ -65,6 +65,7 @@ exports.Server = function()
 			switch(e)
 			{
 				case 'change':
+				case 'rename':
 					this.cache_file(name);
 					break;
 			}
