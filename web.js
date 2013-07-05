@@ -94,7 +94,7 @@ exports.Server = function()
 		var parts = safe_path.split('.');
 		var ext = (parts.length > 1) ? parts[parts.length - 1] : 'html';
 		var content_type = (this.content_types[ext] !== undefined) ? this.content_types[ext] : 'text/html';
-		var route = (this.handlers[content_type] !== undefined) ? content_type : 'fallback';
+		var route = (this.handlers[ext] !== undefined) ? ext : 'fallback';
 
 		if(this.file_cache[safe_path] === undefined)
 		{
