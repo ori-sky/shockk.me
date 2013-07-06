@@ -7,7 +7,10 @@ exports.Server = function()
 	this.file_cache = {};
 	this.content_types = {};
 	this.content_caching = {};
-	this.default_route = 'index.html';
+	this.routes = {};
+
+	this.routes.default = 'index.html';
+	this.routes[404] = '404.html';
 
 	this.handlers = {
 		fallback: function(request, response, request_url, data)
@@ -87,10 +90,17 @@ exports.Server = function()
 	{
 		var request_url = url.parse(request.url, true);
 		var safe_pathname = request_url.pathname.replace(/[^A-Za-z0-9_\-\.]/g, '');
-		var safe_path = (safe_pathname !== '') ? safe_pathname : this.default_route;
+		var safe_path = (safe_pathname !== '') ? safe_pathname : this.routes.default;
 
 		console.log('[HTTP] request from ' + request.socket.remoteAddress + ' for ' + safe_path);
 
+		response.statusCode = 200;
+		this.do_route(safe_path, request, response, request_url, false);
+	}.bind(this);
+
+	this.do_route = function(safe_path, request, response, request_url, fallback_404)
+	{
+		console.log(safe_path);
 		var parts = safe_path.split('.');
 		var ext = (parts.length > 1) ? parts[parts.length - 1] : 'html';
 		var content_type = (this.content_types[ext] !== undefined) ? this.content_types[ext] : 'text/html';
@@ -99,29 +109,26 @@ exports.Server = function()
 		if(this.file_cache[safe_path] === undefined || typeof this.handlers[route] !== 'function')
 		{
 			console.log('[ERROR] 404 Not Found');
-			response.statusCode = 404;
 
-			if(this.file_cache['404.html'] === undefined)
+			if(fallback_404)
 			{
 				response.setHeader('Content-Type', 'text/plain');
-				response.write('404 Not Found');
+				response.write('404 Not Found\n404 Not Found for 404 Not Found document');
 			}
 			else
 			{
-				response.setHeader('Content-Type', 'text/html');
-				this.handlers.fallback(request, response, request_url, this.file_cache['404.html']);
+				this.do_route(this.routes[404], request, response, request_url, true);
 			}
 
 			response.end();
 		}
 		else
 		{
-			response.statusCode = 200;
 			response.setHeader('Content-Type', content_type);
 			this.handlers[route](request, response, request_url, this.file_cache[safe_path]);
 			response.end();
 		}
-	}.bind(this);
+	}
 
 	// prevent uploads which eat memory and other important stuff
 	this.cb_checkContinue = function(request, response)
