@@ -45,6 +45,10 @@ server.handlers.w = function(request, response, request_url, data)
 		response_data = response_data.replace('<*' + k + '*>', placeholder_values[k]);
 	}
 
+	// parse out unset placeholders
+	response_data = response_data.replace(r_placeholder, '');
+
+	// send the data
 	response.write(response_data);
 }
 
