@@ -100,7 +100,6 @@ exports.Server = function()
 
 	this.do_route = function(safe_path, request, response, request_url, fallback_404)
 	{
-		console.log(safe_path);
 		var parts = safe_path.split('.');
 		var ext = (parts.length > 1) ? parts[parts.length - 1] : 'html';
 		var content_type = (this.content_types[ext] !== undefined) ? this.content_types[ext] : 'text/html';
