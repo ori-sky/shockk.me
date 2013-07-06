@@ -1,9 +1,9 @@
+var util = require('util');
 var web = require('./web');
 var server = new web.Server();
 
 server.content_types.png = 'image/png';
 server.content_types.css = 'text/css';
-server.content_types.w = 'text/plain';
 
 var r_template_name = /\*\*([A-Za-z0-9_\-\.]+)\*\a*/m;
 var r_placeholder = /\<\*([A-Za-z0-9_\-\.]+)\*\>/mg;
@@ -21,16 +21,29 @@ server.handlers.w = function(request, response, request_url, data)
 	}
 
 	var template_name = m_template_name[1];
-	response.write(template_name + '\n\n');
 
 	var m_placeholder_value = undefined;
+	var placeholder_values = {};
 
 	while((m_placeholder_value = r_placeholder_value.exec(text)) !== null)
 	{
-		var placeholder_name = m_placeholder_value[1];
-		var placeholder_value = m_placeholder_value[2];
-		response.write(placeholder_name + ' = ' + placeholder_value + '\n\n');
+		placeholder_values[m_placeholder_value[1]] = m_placeholder_value[2];
 	}
+
+	if(server.file_cache[template_name] === undefined)
+	{
+		console.log('[WT] template file does not exist');
+		return;
+	}
+
+	var response_data = server.file_cache[template_name].toString('utf8');
+
+	for(var k in placeholder_values)
+	{
+		response_data = response_data.replace('<*' + k + '*>', placeholder_values[k]);
+	}
+
+	response.write(response_data);
 }
 
 server.handlers.wt = false;
