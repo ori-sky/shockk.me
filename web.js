@@ -5,9 +5,9 @@ var url = require('url');
 exports.Server = function()
 {
 	this.file_cache = {};
-
 	this.content_types = {};
 	this.content_caching = {};
+	this.default_route = 'index.html';
 
 	this.handlers = {
 		fallback: function(request, response, request_url, data)
@@ -87,7 +87,7 @@ exports.Server = function()
 	{
 		var request_url = url.parse(request.url, true);
 		var safe_pathname = request_url.pathname.replace(/[^A-Za-z0-9_\-\.]/g, '');
-		var safe_path = (safe_pathname !== '') ? safe_pathname : 'index.html';
+		var safe_path = (safe_pathname !== '') ? safe_pathname : this.default_route;
 
 		console.log('[HTTP] request from ' + request.socket.remoteAddress + ' for ' + safe_path);
 

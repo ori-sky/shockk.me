@@ -2,6 +2,8 @@ var util = require('util');
 var web = require('./web');
 var server = new web.Server();
 
+server.default_route = 'home.w';
+
 server.content_types.png = 'image/png';
 server.content_types.css = 'text/css';
 
