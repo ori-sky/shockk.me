@@ -4,6 +4,8 @@ var url = require('url');
 
 exports.Server = function()
 {
+	this.do_cache_updates = true;
+
 	this.file_cache = {};
 	this.content_types = {};
 	this.content_caching = {};
@@ -70,20 +72,23 @@ exports.Server = function()
 			}
 		}.bind(this));
 
-		// set up a file system watch on the public directory
-		fs.watch('./public/', function(e, name)
+		if(this.do_cache_updates === true)
 		{
-			// ignore vi/vim magic files
-			if(name.match(/^\./) || name.match(/~$/) || name === '4913') return;
-
-			switch(e)
+			// set up a file system watch on the public directory
+			fs.watch('./public/', function(e, name)
 			{
-				case 'change':
-				case 'rename':
-					this.cache_file(name);
-					break;
-			}
-		}.bind(this));
+				// ignore vi/vim magic files
+				if(name.match(/^\./) || name.match(/~$/) || name === '4913') return;
+
+				switch(e)
+				{
+					case 'change':
+					case 'rename':
+						this.cache_file(name);
+						break;
+				}
+			}.bind(this));
+		}
 
 		this.server = http.createServer();
 		console.log('[HTTP] created');
@@ -117,7 +122,7 @@ exports.Server = function()
 		var route = (this.handlers[ext] !== undefined) ? ext : 'fallback';
 
 		var data = (this.cache_ignores[ext] === true) ? fs.readFileSync('public/' + safe_path) : this.file_cache[safe_path];
-		// todo data instead
+
 		if(data === undefined || typeof this.handlers[route] !== 'function')
 		{
 			console.log('[ERROR] 404 Not Found');
