@@ -8,6 +8,7 @@ exports.Server = function()
 	this.content_types = {};
 	this.content_caching = {};
 	this.routes = {};
+	this.cache_ignores = {};
 
 	this.routes.default = 'index.html';
 	this.routes[404] = '404.html';
@@ -22,16 +23,26 @@ exports.Server = function()
 	// cache a file from disk
 	this.cache_file = function(name)
 	{
-		try
+		var parts = name.split('.');
+		var ext = (parts.length > 1) ? parts[parts.length - 1] : '';
+
+		if(this.cache_ignores[ext] != true)
 		{
-			var data = fs.readFileSync('./public/' + name);
-			this.file_cache[name] = data;
-			console.log('[CACHE] cached ' + name);
+			try
+			{
+				var data = fs.readFileSync('./public/' + name);
+				this.file_cache[name] = data;
+				console.log('[CACHE] cached ' + name);
+			}
+			catch(e)
+			{
+				delete this.file_cache[name];
+				console.log('[CACHE] uncached ' + name);
+			}
 		}
-		catch(e)
+		else
 		{
-			delete this.file_cache[name];
-			console.log('[CACHE] uncached ' + name);
+			console.log('[CACHE] ignored ' + name);
 		}
 	}.bind(this);
 
@@ -105,7 +116,9 @@ exports.Server = function()
 		var content_type = (this.content_types[ext] !== undefined) ? this.content_types[ext] : 'text/html';
 		var route = (this.handlers[ext] !== undefined) ? ext : 'fallback';
 
-		if(this.file_cache[safe_path] === undefined || typeof this.handlers[route] !== 'function')
+		var data = (this.cache_ignores[ext] === true) ? fs.readFileSync('public/' + safe_path) : this.file_cache[safe_path];
+		// todo data instead
+		if(data === undefined || typeof this.handlers[route] !== 'function')
 		{
 			console.log('[ERROR] 404 Not Found');
 
@@ -124,7 +137,7 @@ exports.Server = function()
 		else
 		{
 			response.setHeader('Content-Type', content_type);
-			this.handlers[route](request, response, request_url, this.file_cache[safe_path]);
+			this.handlers[route](request, response, request_url, data);
 			response.end();
 		}
 	}

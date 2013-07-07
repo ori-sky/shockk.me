@@ -8,6 +8,10 @@ server.routes[404] = '404.w';
 server.content_types.png = 'image/png';
 server.content_types.css = 'text/css';
 
+server.cache_ignores.png = true;
+
+server.handlers.wt = false;
+
 var r_template_name = /\*\*([A-Za-z0-9_\-\.]+)\*\a*/m;
 var r_placeholder = /\<\*([A-Za-z0-9_\-\.]+)\*\>/mg;
 var r_placeholder_value = /[^\*]\*([A-Za-z0-9_\-\.]+)\*((.|[\n])+?)\*\*/mg;
@@ -52,7 +56,5 @@ server.handlers.w = function(request, response, request_url, data)
 	// send the data
 	response.write(response_data);
 }
-
-server.handlers.wt = false;
 
 server.start();
