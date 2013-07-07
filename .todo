@@ -12,7 +12,7 @@
     <note priority="veryhigh" time="1373056889">
         Make fs.watch cache updates optional
     </note>
-    <note priority="veryhigh" time="1373152892">
+    <note priority="veryhigh" time="1373152892" done="1373238610">
         Add ability to not cache certain file types (PNGs etc) and files over a certain size
     </note>
 </todo>
