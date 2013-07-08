@@ -17,6 +17,7 @@
 		<p>On this website, the web server is configured with PNG files mapping to <code>image/png</code> and CSS files mapping to <code>text/css</code> as you would expect. A cache ignore it added for PNG files to avoid issues with huge images. The default page is <code>home.w</code> and the 404 page is <code>404.w</code>. The file extension <code>.wt</code> is ignored by the web server and will trigger a 404. This will be explained in <span class="muted">Web Templates</span>.</p>
 	</div>
 </div>
+<hr />
 <div class="row-fluid">
 	<div class="span3"><h3 class="muted">Bootstrap</h3></div>
 	<div class="span9">
@@ -24,6 +25,7 @@
 		<p>If you've never heard of Bootstrap, I recommend you take a look at the source code of this page <b>right now</b> to see what it's all about. Then I recommend you click the link above to see what it's really all about. I'm no expert in using Bootstrap - this is the first website I've used it with - but it's incredibly easy to make stuff look great with it.</p>
 	</div>
 </div>
+<hr />
 <div class="row-fluid">
 	<div class="span3"><h3 class="muted">Web Templates</h3></div>
 	<div class="span9">
@@ -33,6 +35,7 @@
 		<p>Finally, I had to figure out some weird syntax for files which use templates. It should be pretty self-explanatory once you see the code, so click the GitHub link found at the bottom of any page on this site, and take a look at <code>public/home.w</code> and <code>public/404.w</code> and also <code>public/template.wt</code>. The <code>.w</code> extension is short for <i>web</i> and the <code>.wt</code> extension is short for <i>web template</i>. Not the most original, but it does the job well.</p>
 	</div>
 </div>
+<hr />
 <div class="row-fluid">
 	<div class="span3"><h3 class="muted">Open Source</h3></div>
 	<div class="span9">
