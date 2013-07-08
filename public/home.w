@@ -4,7 +4,10 @@
 
 *BODY*
 <div class="page-header">
-	<h3><small>I'm David Farrell. I'm primarily a Node.js developer but I do a lot of web development and I've also worked with C/C++, Objective-C, C# and Java. This is my portfolio.</small></h3>
+	<h5 class="text-center muted">
+		<p>I'm David Farrell. I'm primarily a Node.js developer but I do a lot of web development and I've also worked with C/C++, Objective-C, C# and Java.</p>
+		<p>This is my portfolio.</p>
+	</h5>
 </div>
 
 <div class="row-fluid">
@@ -39,7 +42,7 @@
 <div class="row-fluid">
 	<div class="span3"><h3 class="muted">Open Source</h3></div>
 	<div class="span9">
-		<p>This entire website is open source. No explanation required. Go click the GitHub link below if you're interested.</p>
+		<p>This entire website is open source. No explanation required. Go click the GitHub link in the footer if you're interested.</p>
 		<p><a class="btn btn-mini btn-info" href="https://github.com/ShockkPony/shockk.me">Or just click here</a></p>
 	</div>
 </div>
