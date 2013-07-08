@@ -20,16 +20,20 @@
 <div class="row-fluid">
 	<div class="span3"><h3 class="muted">Bootstrap</h3></div>
 	<div class="span9">
+		<p>Once I had a <i>barely</i> functional web server, I started considering my options. In the past, I've usually written websites from the ground up, originally sticking very closely to XHTML 1.1 and then adopting newer technologies such as CSS 3 and HTML 5. I'm still a fan of building stuff from the ground up but this time, I've opted to use <a href="http://twitter.github.io/bootstrap/">Twitter Bootstrap</a>. Bootstrap is a really nice front-end framework which does all the heavy lifting to get websites to look right on all of the major web browsers, with the added bonus of providing some beautiful controls for common things required on web pages.</p>
+		<p>If you've never heard of Bootstrap, I recommend you take a look at the source code of this page <b>right now</b> to see what it's all about. Then I recommend you click the link above to see what it's really all about. I'm no expert in using Bootstrap - this is the first website I've used it with - but it's incredibly easy to make stuff look great with it.</p>
 	</div>
 </div>
 <div class="row-fluid">
 	<div class="span3"><h3 class="muted">Web Templates</h3></div>
 	<div class="span9">
+		
 	</div>
 </div>
 <div class="row-fluid">
 	<div class="span3"><h3 class="muted">Open Source</h3></div>
 	<div class="span9">
+		
 	</div>
 </div>
 **
