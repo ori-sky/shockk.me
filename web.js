@@ -121,7 +121,19 @@ exports.Server = function()
 		var content_type = (this.content_types[ext] !== undefined) ? this.content_types[ext] : 'text/html';
 		var route = (this.handlers[ext] !== undefined) ? ext : 'fallback';
 
-		var data = (this.cache_ignores[ext] === true) ? fs.readFileSync('public/' + safe_path) : this.file_cache[safe_path];
+		var data = this.file_cache[safe_path];
+
+		if(this.cache_ignores[ext] === true)
+		{
+			try
+			{
+				data = fs.readFileSync('public/' + safe_path);
+			}
+			catch(e)
+			{
+
+			}
+		}
 
 		if(data === undefined || typeof this.handlers[route] !== 'function')
 		{
