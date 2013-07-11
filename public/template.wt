@@ -34,13 +34,11 @@
 			<*BODY*>
 			<hr />
 			<footer class="muted">
-				<p>
-					<p>Copyright © 2013 David Farrell.</p>
-					<p style="font-size: 10px;">
-						Code licensed under <a href="http://opensource.org/licenses/BSD-2-Clause">BSD 2-Clause License</a> available on <a class="btn btn-mini btn-info" href="https://github.com/ShockkPony/shockk.me">GitHub</a>
-						<br />
-						<a href="http://glyphicons.com">Glyphicons Free</a> licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>
-					</p>
+				<p>Copyright © 2013 David Farrell.</p>
+				<p class="text-center" style="font-size: 10px;">
+					Code licensed under <a href="http://opensource.org/licenses/BSD-2-Clause">BSD 2-Clause License</a> available on <a class="btn btn-mini btn-info" href="https://github.com/ShockkPony/shockk.me">GitHub</a>
+					<br />
+					<a href="http://glyphicons.com">Glyphicons Free</a> licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>
 				</p>
 			</footer>
 			<*BODY_END*>
