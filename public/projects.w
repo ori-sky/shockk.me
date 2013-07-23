@@ -1,6 +1,7 @@
 **template.wt**
 
 *TITLE*Projects**
+*NAV_PROJECTS_CLASS*active**
 
 *BODY*
 <div class="row">

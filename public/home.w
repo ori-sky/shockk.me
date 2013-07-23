@@ -1,6 +1,7 @@
 **template.wt**
 
 *TITLE*Home**
+*NAV_HOME_CLASS*active**
 
 *BODY*
 <div class="page-header">
