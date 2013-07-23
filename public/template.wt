@@ -23,8 +23,22 @@
 					<div class="nav-collapse collapse">
 						<ul class="nav">
 							<li class="<*NAV_HOME_CLASS*>"><a href="/"><i class="icon-home"></i> Home</a></li>
-							<li class="<*NAV_PROJECTS_CLASS*>"><a href="/projects.w"><i class="icon-briefcase"></i> Projects</a></li>
+							<li class="dropdown <*NAV_PROJECTS_CLASS*>">
+								<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+									<i class="icon-th-list"></i> Projects
+									<b class="caret"></b>
+								</a>
+								<ul class="dropdown-menu" role="menu">
+									<li class="<*NAV_EMWEB_CLASS*>"><a href="/emweb.w">emweb</a></li>
+									<li class="<*NAV_IBOT_CLASS*>"><a href="/ibot.w">iBot</a></li>
+									<li class="<*NAV_RIGHIRC_CLASS*>"><a href="/rightirc.w">RightIRC</a></li>
+									<li class="<*NAV_SHOCKK.ME_CLASS*>"><a href="/shockk.me.w">shockk.me</a></li>
+									<li class="<*NAV_WEB_TEMPLATES_CLASS*>"><a href="/web_templates.w">Web Templates</a></li>
+								</ul>
+							</li>
+
 							<li class="<*NAV_ABOUT_CLASS*>"><a href="/about.w"><i class="icon-user"></i> About Me</a></li>
+							<li class="<*NAV_CONTACT_CLASS*>"><a href="/contact.w"><i class="icon-envelope"></i> Contact</a></li>
 						</ul>
 					</div>
 				</div>
@@ -42,6 +56,8 @@
 				</p>
 			</footer>
 			<*BODY_END*>
+			<script src="jquery-2.0.3.min.js"></script>
+			<script src="bootstrap.min.js"></script>
 		</div>
 	</body>
 </html>
