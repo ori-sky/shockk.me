@@ -1,4 +1,3 @@
-var util = require('util');
 var emweb = require('emweb');
 var server = new emweb.Server();
 
