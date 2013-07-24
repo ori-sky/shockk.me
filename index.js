@@ -1,6 +1,6 @@
 var util = require('util');
-var web = require('./web');
-var server = new web.Server();
+var emweb = require('emweb');
+var server = new emweb.Server();
 
 server.routes.default = 'home.w';
 server.routes[404] = '404.w';
