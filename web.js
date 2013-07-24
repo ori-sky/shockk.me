@@ -179,7 +179,15 @@ exports.Server = function()
 
 	this.log = function(plugin, message)
 	{
-		var today = new Date();
-		console.log(today.toUTCString() + ' [' + plugin + '] ' + message);
+		if(this.today === undefined)
+		{
+			this.today = new Date().toUTCString();
+			setInterval(function()
+			{
+				this.today = new Date().toUTCString();
+			}.bind(this), 1000);
+		}
+
+		console.log(this.today + ' [' + plugin + '] ' + message);
 	}
 }
