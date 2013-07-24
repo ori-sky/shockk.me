@@ -34,17 +34,17 @@ exports.Server = function()
 			{
 				var data = fs.readFileSync('./public/' + name);
 				this.file_cache[name] = data;
-				console.log('[CACHE] cached ' + name);
+				this.log('CACHE', 'cached ' + name);
 			}
 			catch(e)
 			{
 				delete this.file_cache[name];
-				console.log('[CACHE] uncached ' + name);
+				this.log('CACHE', 'uncached ' + name);
 			}
 		}
 		else
 		{
-			console.log('[CACHE] ignored ' + name);
+			this.log('CACHE', 'ignored ' + name);
 		}
 	}.bind(this);
 
@@ -91,11 +91,17 @@ exports.Server = function()
 		}
 
 		this.server = http.createServer();
-		console.log('[HTTP] created');
+		this.log('HTTP', 'created');
 
-		this.server.listen(80);
+		this.server.listen(80, function(err)
+		{
+			if(err) console.log(err);
+
+			// drop root privilege
+			process.setuid(process.env.SUDO_USER);
+		});
 		var addr = this.server.address();
-		console.log('[HTTP] listening on ' + addr.address + ':' + addr.port);
+		this.log('HTTP', 'listening on ' + addr.address + ':' + addr.port);
 
 		this.server.on('request', this.cb_request);
 		this.server.on('checkContinue', this.cb_checkContinue);
@@ -108,7 +114,7 @@ exports.Server = function()
 		var safe_pathname = request_url.pathname.replace(/[^A-Za-z0-9_\-\.]/g, '');
 		var safe_path = (safe_pathname !== '') ? safe_pathname : this.routes.default;
 
-		console.log('[HTTP] request from ' + request.socket.remoteAddress + ' for ' + safe_path);
+		this.log('HTTP', 'request from ' + request.socket.remoteAddress + ' for ' + safe_path);
 
 		response.statusCode = 200;
 		this.do_route(safe_path, request, response, request_url, false);
@@ -137,7 +143,8 @@ exports.Server = function()
 
 		if(data === undefined || typeof this.handlers[route] !== 'function')
 		{
-			console.log('[ERROR] 404 Not Found');
+			this.log('ERROR', '404 Not Found');
+			response.statusCode = 404;
 
 			if(fallback_404)
 			{
@@ -166,4 +173,10 @@ exports.Server = function()
 		response.end();
 		request.socket.end();
 	}.bind(this);
+
+	this.log = function(plugin, message)
+	{
+		var today = new Date();
+		console.log(today.toUTCString() + ' [' + plugin + '] ' + message);
+	}
 }
