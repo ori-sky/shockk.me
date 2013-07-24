@@ -5,6 +5,7 @@ var url = require('url');
 exports.Server = function()
 {
 	this.do_cache_updates = true;
+	this.drop_root_privilege = true;
 
 	this.file_cache = {};
 	this.content_types = {};
@@ -97,9 +98,11 @@ exports.Server = function()
 		{
 			if(err) console.log(err);
 
-			// drop root privilege
-			process.setuid(process.env.SUDO_USER);
-		});
+			if(this.drop_root_privilege === true)
+			{
+				process.setuid(process.env.SUDO_USER);
+			}
+		}.bind(this));
 		var addr = this.server.address();
 		this.log('HTTP', 'listening on ' + addr.address + ':' + addr.port);
 
