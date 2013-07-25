@@ -25,11 +25,11 @@
 							<li class="<*NAV_HOME_CLASS*>"><a href="/"><i class="icon-home"></i> Home</a></li>
 							<li class="dropdown <*NAV_PROJECTS_CLASS*>">
 								<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-									<i class="icon-th-list"></i> Projects
-									<b class="caret"></b>
+									<i class="icon-th-list"></i> Projects <b class="caret"></b>
 								</a>
-								<ul class="dropdown-menu" role="menu">
+								<ul class="dropdown-menu">
 									<li class="<*NAV_EMWEB_CLASS*>"><a href="/emweb.w">emweb</a></li>
+									<li class="<*NAV_EMWEB_WT_CLASS*>"><a href="/emweb-wt.w">emweb-wt</a></li>
 									<li class="<*NAV_IBOT_CLASS*>"><a href="/ibot.w">iBot</a></li>
 									<li class="<*NAV_RIGHIRC_CLASS*>"><a href="/rightirc.w">RightIRC</a></li>
 									<li class="<*NAV_SHOCKK.ME_CLASS*>"><a href="/shockk.me.w">shockk.me</a></li>
