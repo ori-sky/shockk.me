@@ -1,4 +1,4 @@
-**template.wt**
+**template.html.wt**
 
 *TITLE*404 Not Found**
 

@@ -1,4 +1,4 @@
-**template.wt**
+**template.html.wt**
 
 *TITLE*Projects**
 *NAV_PROJECTS_CLASS*active**

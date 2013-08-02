@@ -1,4 +1,4 @@
-**template.wt**
+**template.html.wt**
 
 *TITLE*Home**
 *NAV_HOME_CLASS*active**
