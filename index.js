@@ -15,7 +15,7 @@ server.routes.phppathphp = cb_skids;
 server.content_types.png = 'image/png';
 server.content_types.css = 'text/css';
 
-server.cache_ignores.default = 102400;
+server.cache_ignores.default = 204800;
 
 server.handlers.w = emweb_wt.handlers.w;
 server.handlers.wt = false;
