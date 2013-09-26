@@ -6,13 +6,14 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title><*TITLE*></title>
 		<link rel="stylesheet" href="bootstrap.min.css" />
-		<link rel="stylesheet" href="bootstrap-responsive.min.css" />
 
 		<style type="text/css">
 			body {
 				padding-top: 60px;
 			}
 		</style>
+
+		<link rel="stylesheet" href="bootstrap-responsive.min.css" />
 
 		<*HEAD*>
 	</head>
