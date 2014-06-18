@@ -1,0 +1,18 @@
+body {
+	background-color: #333;
+}
+
+.shk-panel-dark {
+	border-color: #555;
+}
+
+.shk-panel-dark > .panel-heading {
+	color: lightgray;
+	background-color: #333;
+	border-color: #555;
+}
+
+.shk-panel-title {
+	font-variant: small-caps;
+	text-align: center;
+}
