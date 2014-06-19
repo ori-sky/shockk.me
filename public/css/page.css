@@ -21,6 +21,7 @@ body {
 	display: inline-block;
 	position: relative;
 	width: 100%;
+	margin-top: 7px;
 }
 
 .shk-thumb-dummy {
@@ -37,9 +38,17 @@ body {
 }
 
 .shk-thumb-light {
-	box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.8);
+	box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.65);
 }
 
 .shk-thumb-dark {
 	box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.65);
+}
+
+.shk-thumb-light:hover {
+	box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.8);
+}
+
+.shk-thumb-dark:hover {
+	box-shadow: inset 0 0 75px rgba(255, 255, 255, 0.65);
 }
