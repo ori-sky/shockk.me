@@ -2,6 +2,19 @@ body {
 	background-color: #333;
 }
 
+.shk-space-above {
+	margin-top: 15px;
+}
+
+.shk-space-below {
+	margin-bottom: 15px;
+}
+
+.shk-space {
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
 .shk-panel-dark {
 	border-color: #555;
 }
@@ -18,13 +31,18 @@ body {
 }
 
 .shk-thumb-container {
-	display: inline-block;
 	position: relative;
 	width: 100%;
-	margin-top: 7px;
+	max-width: 350px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
-.shk-thumb-dummy {
+.shk-thumb-dummy-1-1 {
+	padding-top: 100%;
+}
+
+.shk-thumb-dummy-4-3 {
 	padding-top: 75%;
 }
 
@@ -34,7 +52,27 @@ body {
 	bottom: 0;
 	left: 0;
 	right: 0;
-	background-size: cover;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.shk-thumb-inline {
+	display: inline-block;
+	vertical-align: middle;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.shk-yt {
+	width: 85px;
+	height: 60px;
+	background-image: url('../img/YouTube-icon-full_color.png');
+}
+
+.shk-ghmark {
+	width: 72.5px;
+	height: 72.5px;
+	background-image: url('../img/GitHub-Mark-120px-plus.png');
 }
 
 .shk-thumb-light {
