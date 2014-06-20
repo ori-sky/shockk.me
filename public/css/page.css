@@ -56,6 +56,13 @@ body {
 	background-repeat: no-repeat;
 }
 
+.shk-thumb-inline-container {
+	margin-top: 7px;
+	margin-bottom: 7px;
+	text-align: center;
+	letter-spacing: 13px;
+}
+
 .shk-thumb-inline {
 	display: inline-block;
 	vertical-align: middle;
