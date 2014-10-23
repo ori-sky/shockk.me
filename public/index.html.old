@@ -20,16 +20,47 @@
 						<div class="panel-heading"><h3 class="panel-title shk-panel-title">OpenGL Project</h3></div>
 						<div class="panel-body">
 							This project was written for the Advanced Games Programming module on my university course.
+							Click the thumbnails below to view the project on YouTube and GitHub.
 							<div class="container shk-thumb-inline-container" style="width: 100%; letter-spacing: 13px;">
 								<a target="_blank" href="https://youtu.be/tujEj3j0ppw" alt="YouTube"><div class="shk-thumb-inline shk-yt"></div></a>
 								<a target="_blank" href="https://github.com/shockkolate/AGPLabs.git" alt="GitHub"><div class="shk-thumb-inline shk-ghmark"></div></a>
 							</div>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae urna ullamcorper leo condimentum varius. Nulla posuere, urna in vestibulum pharetra, justo massa feugiat leo, et porttitor arcu lorem at enim. Suspendisse eget blandit quam. Ut eleifend velit eget gravida luctus.
-							<div class="shk-thumb-container shk-space-above">
+							You can download the Windows binary by clicking the thumbnail below.
+							<div class="shk-thumb-container shk-space">
 								<div class="shk-thumb-dummy-4-3"></div>
 								<a href="files/opengl-project.zip" alt="Advanced Games Programming - Project">
 									<div class="shk-thumb shk-thumb-dark" style="background-image: url('img/opengl_thumb1.png');"></div>
 								</a>
+							</div>
+							<div class="container text-center" style="width: 100%;">
+								<div class="row" style="margin-bottom: 7px;">
+									<div class="col-md-3"><kbd>w</kbd> <span class="glyphicon glyphicon-arrow-up"></span></div>
+									<div class="col-md-3"><kbd>a</kbd> <span class="glyphicon glyphicon-arrow-left"></span></div>
+									<div class="col-md-3"><kbd>s</kbd> <span class="glyphicon glyphicon-arrow-down"></span></div>
+									<div class="col-md-3"><kbd>d</kbd> <span class="glyphicon glyphicon-arrow-right"></span></div>
+								</div>
+								<div class="row" style="margin-bottom: 7px;">
+									<div class="col-md-3"><kbd>q</kbd> <span class="glyphicon glyphicon-chevron-left"></span></div>
+									<div class="col-md-3"><kbd>e</kbd> <span class="glyphicon glyphicon-chevron-right"></span></div>
+									<div class="col-md-3"><kbd>&nbsp;</kbd> <span class="glyphicon glyphicon-cloud-upload"></span></div>
+									<div class="col-md-3"><kbd>c</kbd> <span class="glyphicon glyphicon-cloud-download"></span></div>
+								</div>
+								<div class="row">
+									<div class="col-md-1"></div>
+									<div class="col-md-2" style="line-height: 23px;"><kbd>1</kbd><br /><span class="glyphicon glyphicon-camera"></span></div>
+									<div class="col-md-2" style="line-height: 23px;"><kbd>2</kbd><br /><span class="glyphicon glyphicon-certificate"></span></div>
+									<div class="col-md-2" style="line-height: 23px;"><kbd>3</kbd><br /><span class="glyphicon glyphicon-transfer"></span></div>
+									<div class="col-md-2" style="line-height: 23px;"><kbd>4</kbd><br /><span class="glyphicon glyphicon-record"></span></div>
+									<div class="col-md-2" style="line-height: 23px;"><kbd>5</kbd><br /><span class="glyphicon glyphicon-pause"></span></div>
+									<div class="col-md-1" style="line-height: 23px;"></div>
+								</div>
+								<div>
+									<kbd><span class="glyphicon glyphicon-arrow-up"></span>
+										<span class="glyphicon glyphicon-arrow-left"></span>
+										<span class="glyphicon glyphicon-arrow-down"></span>
+										<span class="glyphicon glyphicon-arrow-right"></span></kbd>
+									&nbsp;<span class="glyphicon glyphicon-eye-open"></span>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -47,7 +78,7 @@
 								Inspired by Quake and Team Fortress 2, the goal was to achieve similar gameplay in a 2D game.
 							</p>
 							<p>
-								Scuffle is far from complete but you can play it in its current state by clicking on the thumbnail below.
+								Scuffle is far from complete but you can play it by clicking the thumbnail below.
 							</p>
 							<div class="shk-thumb-container shk-space">
 								<div class="shk-thumb-dummy-4-3"></div>
@@ -57,18 +88,10 @@
 							</div>
 							<div class="container text-center" style="width: 100%;">
 								<div class="row" style="margin-bottom: 7px;">
-									<div class="col-md-3">
-										<kbd>w</kbd> <span class="glyphicon glyphicon-arrow-up"></span>
-									</div>
-									<div class="col-md-3">
-										<kbd>a</kbd> <span class="glyphicon glyphicon-arrow-left"></span>
-									</div>
-									<div class="col-md-3">
-										<kbd>s</kbd> <span class="glyphicon glyphicon-arrow-down"></span>
-									</div>
-									<div class="col-md-3">
-										<kbd>d</kbd> <span class="glyphicon glyphicon-arrow-right"></span>
-									</div>
+									<div class="col-md-3"><kbd>w</kbd> <span class="glyphicon glyphicon-arrow-up"></span></div>
+									<div class="col-md-3"><kbd>a</kbd> <span class="glyphicon glyphicon-arrow-left"></span></div>
+									<div class="col-md-3"><kbd>s</kbd> <span class="glyphicon glyphicon-arrow-down"></span></div>
+									<div class="col-md-3"><kbd>d</kbd> <span class="glyphicon glyphicon-arrow-right"></span></div>
 								</div>
 								<kbd>Mouse Left</kbd> <span class="glyphicon glyphicon-screenshot"></span>
 							</div>
