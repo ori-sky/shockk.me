@@ -1,5 +1,9 @@
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans:400);
+@import url(http://fonts.googleapis.com/css?family=Ubuntu:400,500);
+
 body {
 	background-color: #333;
+	font-family: 'Droid Sans', sans-serif;
 }
 
 .post-panel > .panel-heading {
@@ -7,18 +11,21 @@ body {
 }
 
 .post-panel > .panel-heading > .panel-title {
-	color: #666;
 	font-variant: small-caps;
 }
 
 .post-panel > .panel-heading > h1.panel-title {
-	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
-	font-size: 70px;
+	color: #555;
+	font-size: 45px;
+	font-family: 'Ubuntu', sans-serif;
+	font-weight: 500;
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.016);
 }
 
 .post-panel > .panel-heading > h2.panel-title {
-	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+	color: #666;
 	font-size: 30px;
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.008);
 }
 
 .post-panel img {
