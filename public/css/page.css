@@ -6,6 +6,12 @@ body {
 	font-family: 'Droid Sans', sans-serif;
 }
 
+blockquote {
+	background-color: rgba(0, 0, 0, 0.05);
+	border: none;
+	box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.35);
+}
+
 .post-panel {
 	border-style: none;
 }
