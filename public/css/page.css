@@ -13,6 +13,25 @@ blockquote {
 	font-size: 110%;
 }
 
+.iframe {
+	max-width: 1280px;
+	margin: 0px auto;
+}
+
+.iframe > div {
+	position: relative;
+	padding-bottom: 56.25%; /* 9/16 */
+	height: 0px;
+}
+
+.iframe iframe {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+}
+
 .post-panel {
 	border-style: none;
 }
@@ -27,7 +46,7 @@ blockquote {
 
 .post-panel > .panel-heading > h1.panel-title {
 	color: #555;
-	font-size: 45px;
+	font-size: 48px;
 	font-family: 'Ubuntu', sans-serif;
 	font-weight: 500;
 	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.016);
@@ -100,12 +119,21 @@ blockquote {
 	width: 85px;
 	height: 60px;
 	background-image: url('../img/YouTube-icon-full_color.png');
+	background-position: center;
 }
 
 .shk-ghmark {
 	width: 72.5px;
 	height: 72.5px;
 	background-image: url('../img/GitHub-Mark-120px-plus.png');
+	background-position: center;
+}
+
+.shk-linkedin {
+	width: 72.5px;
+	height: 72.5px;
+	background-image: url('../img/In-Black-128px-TM.png');
+	background-position: center;
 }
 
 .shk-thumb-light {
