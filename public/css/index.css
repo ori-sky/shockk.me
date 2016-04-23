@@ -19,7 +19,7 @@ video#bgvid {
 	-moz-transform:    translateX(-75%) translateY(-50%);
 	-webkit-transform: translateX(-75%) translateY(-50%);
 	transform:         translateX(-75%) translateY(-50%);
-	background: url(img/agp2.2.png) no-repeat;
+	background: url(../img/agp2.2.png) no-repeat;
 	background-size: cover;
 	opacity: 0.35;
 }
