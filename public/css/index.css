@@ -1,25 +1,3 @@
-body {
-	background: black;
-}
-
 .post-panel {
 	margin-top: 140px;
-}
-
-video#bgvid {
-	position: fixed;
-	left: 75%;
-	top: 50%;
-	min-width: 100%;
-	min-height: 100%;
-	width: auto;
-	height: auto;
-	z-index: -100;
-	-ms-transform:     translateX(-75%) translateY(-50%);
-	-moz-transform:    translateX(-75%) translateY(-50%);
-	-webkit-transform: translateX(-75%) translateY(-50%);
-	transform:         translateX(-75%) translateY(-50%);
-	background: url(../img/agp2.2.png) no-repeat;
-	background-size: cover;
-	opacity: 0.35;
 }
