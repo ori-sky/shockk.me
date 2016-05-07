@@ -129,13 +129,6 @@ blockquote {
 	background-position: center;
 }
 
-.shk-linkedin {
-	width: 72.5px;
-	height: 72.5px;
-	background-image: url('../img/In-Black-128px-TM.png');
-	background-position: center;
-}
-
 .shk-thumb-light {
 	box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.65);
 }
